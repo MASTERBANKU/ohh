@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Singh Residency Medanta — A Comfortable Stay, Close to What Matters</title>
+<meta name="description" content="Hotel Singh Residency Medanta offers a peaceful, convenient stay in Sector 39, Gurugram, just minutes from Medanta Hospital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F7F3EA;
+    --beige:#EBE1CE;
+    --charcoal:#26241F;
+    --charcoal-deep:#1A1815;
+    --gold:#AD8A55;
+    --gold-soft:#C9AD7B;
+    --line:rgba(38,36,31,0.12);
+    --line-on-dark:rgba(247,243,234,0.16);
+    --shadow: 0 20px 60px rgba(26,24,21,0.12);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    font-family:'Manrope', sans-serif;
+    background:var(--ivory);
+    color:var(--charcoal);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  button{font-family:inherit; cursor:pointer;}
+
+  .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+  }
+
+  /* ---------- grain overlay ---------- */
+  #grain{
+    position:fixed; inset:0; z-index:9999; pointer-events:none;
+    opacity:0.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 1.2s steps(4) infinite;
+  }
+  @keyframes grain{
+    0%,100%{transform:translate(0,0);}
+    25%{transform:translate(-1%,1%);}
+    50%{transform:translate(1%,-1%);}
+    75%{transform:translate(-1%,-1%);}
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.9s var(--ease), transform 0.9s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal-delay-1{transition-delay:0.1s;}
+  .reveal-delay-2{transition-delay:0.2s;}
+  .reveal-delay-3{transition-delay:0.3s;}
+
+  /* ---------- layout helpers ---------- */
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+
+  /* ---------- navbar ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:500;
+    padding:26px 0;
+    transition:padding 0.5s var(--ease), background 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.5s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    padding:16px 0;
+    background:rgba(247,243,234,0.72);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 8px 30px rgba(26,24,21,0.05);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:1180px; margin:0 auto; padding:0 32px;
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-size:1.05rem; letter-spacing:0.08em;
+    color:var(--ivory); font-weight:500; transition:color 0.5s var(--ease);
+  }
+  header.scrolled .logo{color:var(--charcoal);}
+  .nav-links{
+    display:flex; gap:38px; list-style:none;
+    font-size:0.86rem; letter-spacing:0.02em;
+  }
+  .nav-links a{
+    color:rgba(247,243,234,0.88); position:relative; padding:4px 0;
+    transition:color 0.4s var(--ease);
+  }
+  header.scrolled .nav-links a{color:var(--charcoal);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px;
+    background:var(--gold); transition:width 0.35s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--gold); color:var(--charcoal-deep) !important;
+    padding:11px 24px; border-radius:100px; font-size:0.82rem; font-weight:600;
+    letter-spacing:0.03em; transition:transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background 0.35s var(--ease);
+  }
+  .nav-cta:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(173,138,85,0.35); background:var(--gold-soft);}
+  .nav-toggle{display:none; background:none; border:none; color:var(--ivory); font-size:1.6rem;}
+  header.scrolled .nav-toggle{color:var(--charcoal);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    height:100vh; min-height:640px; position:relative;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:-6%;
+    will-change:transform;
+  }
+  .hero-bg img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    animation:heroZoom 9s var(--ease) forwards;
+  }
+  @keyframes heroZoom{
+    from{transform:scale(1.14);}
+    to{transform:scale(1.02);}
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,18,15,0.55) 0%, rgba(20,18,15,0.28) 38%, rgba(20,18,15,0.72) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2; width:100%;
+    padding:0 32px 92px; max-width:1180px; margin:0 auto;
+    color:var(--ivory);
+  }
+  .hero-loc{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.75rem; letter-spacing:0.14em; text-transform:uppercase;
+    padding:8px 16px; border:1px solid var(--line-on-dark); border-radius:100px;
+    color:var(--ivory); backdrop-filter:blur(6px);
+    background:rgba(255,255,255,0.06);
+    margin-bottom:26px;
+  }
+  .hero-loc .dot{width:5px; height:5px; border-radius:50%; background:var(--gold-soft); position:relative;}
+  .hero-loc .dot::after{
+    content:''; position:absolute; inset:-4px; border-radius:50%; border:1px solid var(--gold-soft);
+    animation:dotPulse 2.4s ease-out 1.1s infinite;
+  }
+  @keyframes dotPulse{0%{transform:scale(0.4); opacity:0.9;} 100%{transform:scale(2.2); opacity:0;}}
+  .hero h1{
+    font-size:clamp(2.4rem, 5.6vw, 4.4rem);
+    line-height:1.08; font-weight:400; max-width:920px;
+  }
+  .hero h1 .line{
+    display:block; overflow:hidden; padding-bottom:0.08em;
+  }
+  .hero h1 .line span{
+    display:inline-block;
+    opacity:0; filter:blur(14px);
+    animation:blurIn 2s var(--ease) forwards;
+  }
+  .hero h1 .line:nth-child(1) span{animation-delay:0.45s;}
+  .hero h1 .line:nth-child(2) span{animation-delay:0.62s;}
+  @keyframes blurIn{
+    from{opacity:0; filter:blur(14px);}
+    to{opacity:1; filter:blur(0);}
+  }
+
+  .hero-sub{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.1rem, 2vw, 1.4rem); color:var(--gold-soft);
+    margin-top:18px;
+    letter-spacing:0.02em;
+    opacity:0; filter:blur(14px);
+    animation:blurIn 2s var(--ease) 0.95s forwards;
+  }
+  .hero-support{
+    font-size:1rem; color:rgba(247,243,234,0.82); max-width:520px;
+    margin-top:16px; line-height:1.6;
+    opacity:0; filter:blur(14px);
+    animation:blurIn 2s var(--ease) 1.1s forwards;
+  }
+
+  .hero-actions{
+    display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 30px; border-radius:100px; font-size:0.85rem;
+    font-weight:600; letter-spacing:0.03em; white-space:nowrap;
+    transition:transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background 0.35s var(--ease), color 0.35s var(--ease);
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--gold); color:var(--charcoal-deep);}
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(173,138,85,0.4); background:var(--gold-soft);}
+  .btn-ghost{border-color:var(--line-on-dark); color:var(--ivory); background:rgba(255,255,255,0.04); backdrop-filter:blur(6px);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.12); transform:translateY(-3px);}
+  .btn-dark{background:var(--charcoal); color:var(--ivory);}
+  .btn-dark:hover{background:var(--charcoal-deep); transform:translateY(-3px); box-shadow:0 14px 30px rgba(26,24,21,0.3);}
+  .btn-outline-dark{border-color:var(--line); color:var(--charcoal); background:transparent;}
+  .btn-outline-dark:hover{background:var(--charcoal); color:var(--ivory); transform:translateY(-3px);}
+
+  .scroll-cue{
+    position:absolute; right:32px; bottom:28px; z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    color:rgba(247,243,234,0.7); font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase;
+  }
+  .scroll-cue .stem{width:1px; height:44px; background:linear-gradient(var(--gold-soft), transparent); position:relative; overflow:hidden;}
+  .scroll-cue .stem::after{
+    content:''; position:absolute; top:-100%; left:0; width:100%; height:100%;
+    background:var(--gold-soft); animation:scrollLine 2.2s ease-in-out infinite;
+  }
+  @keyframes scrollLine{0%{top:-100%;} 60%{top:100%;} 100%{top:100%;}}
+
+  /* ---------- section spacing / headers ---------- */
+  .section{padding:130px 0;}
+  .section-tight{padding:100px 0;}
+  .section-head{max-width:640px; margin-bottom:64px;}
+  .section-head h2{font-size:clamp(1.9rem, 3.4vw, 2.7rem); margin-top:14px; line-height:1.16;}
+  .section-head p{margin-top:18px; font-size:1.02rem; line-height:1.75; color:rgba(38,36,31,0.72); max-width:540px;}
+
+  /* ---------- about ---------- */
+  .about{background:var(--ivory);}
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;
+  }
+  .about-media{position:relative; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); aspect-ratio:4/5;}
+  .about-media img{width:100%; height:100%; object-fit:cover; transition:transform 1.4s var(--ease);}
+  .about-media:hover img{transform:scale(1.06);}
+  .about-media-tag{
+    position:absolute; left:22px; bottom:22px; z-index:2;
+    background:rgba(247,243,234,0.88); backdrop-filter:blur(10px);
+    padding:14px 20px; border-radius:14px; display:flex; align-items:center; gap:12px;
+    box-shadow:0 10px 30px rgba(26,24,21,0.15);
+  }
+  .about-media-tag .num{font-family:'Fraunces', serif; font-size:1.5rem; color:var(--gold);}
+  .about-media-tag .label{font-size:0.72rem; line-height:1.35; letter-spacing:0.03em; color:var(--charcoal); max-width:120px;}
+  .about-copy .eyebrow{margin-bottom:16px; display:block;}
+  .about-copy h2{font-size:clamp(1.9rem, 3.2vw, 2.5rem); line-height:1.18; margin-bottom:22px;}
+  .about-copy p{font-size:1.02rem; line-height:1.8; color:rgba(38,36,31,0.74); max-width:480px;}
+  .about-copy p + p{margin-top:16px;}
+  .about-divider{width:56px; height:1px; background:var(--gold); margin:28px 0;}
+
+  /* ---------- highlights ---------- */
+  .highlights{background:var(--beige);}
+  .highlight-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:20px; overflow:hidden;
+  }
+  .highlight-card{
+    background:var(--beige); padding:44px 30px; text-align:left;
+    transition:background 0.4s var(--ease);
+  }
+  .highlight-card:hover{background:var(--ivory);}
+  .highlight-icon{
+    width:44px; height:44px; margin-bottom:24px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%; border:1px solid var(--gold);
+    transition:transform 0.5s var(--ease), background 0.5s var(--ease);
+  }
+  .highlight-card:hover .highlight-icon{transform:rotate(-8deg) scale(1.08); background:var(--gold); }
+  .highlight-icon svg{width:20px; height:20px; stroke:var(--gold); transition:stroke 0.4s var(--ease);}
+  .highlight-card:hover .highlight-icon svg{stroke:var(--ivory);}
+  .highlight-card h3{font-size:1.08rem; font-weight:500; margin-bottom:10px;}
+  .highlight-card p{font-size:0.9rem; line-height:1.6; color:rgba(38,36,31,0.66);}
+
+  /* ---------- rooms ---------- */
+  .rooms{background:var(--ivory);}
+  .room-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:30px;}
+  .room-card{
+    background:#fff; border-radius:18px; overflow:hidden; border:1px solid var(--line);
+    box-shadow:0 4px 20px rgba(26,24,21,0.04);
+    transition:transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+  .room-card:hover{transform:translateY(-8px); box-shadow:0 26px 50px rgba(26,24,21,0.14);}
+  .room-media{aspect-ratio:5/4; overflow:hidden; position:relative;}
+  .room-media img{width:100%; height:100%; object-fit:cover; transition:transform 0.9s var(--ease);}
+  .room-card:hover .room-media img{transform:scale(1.08);}
+  .room-body{padding:28px 26px 30px;}
+  .room-body .eyebrow{margin-bottom:8px;}
+  .room-body h3{font-size:1.3rem; font-weight:400; margin-bottom:10px;}
+  .room-body p{font-size:0.92rem; line-height:1.65; color:rgba(38,36,31,0.68); margin-bottom:22px;}
+  .room-actions{display:flex; align-items:center; justify-content:space-between; gap:14px;}
+  .room-link{
+    font-size:0.82rem; font-weight:600; letter-spacing:0.02em; color:var(--charcoal);
+    display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid var(--charcoal); padding-bottom:2px;
+    transition:color 0.3s var(--ease), border-color 0.3s var(--ease), gap 0.3s var(--ease);
+  }
+  .room-link:hover{color:var(--gold); border-color:var(--gold); gap:10px;}
+  .room-mini-btn{
+    background:var(--charcoal); color:var(--ivory); padding:10px 18px; border-radius:100px; font-size:0.78rem; font-weight:600;
+    transition:background 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .room-mini-btn:hover{background:var(--gold); transform:translateY(-2px);}
+
+  /* ---------- amenities ---------- */
+  .amenities{background:var(--charcoal-deep); color:var(--ivory);}
+  .amenities .section-head p{color:rgba(247,243,234,0.62);}
+  .amenities .eyebrow{color:var(--gold-soft);}
+  .amen-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--line-on-dark); border:1px solid var(--line-on-dark); border-radius:20px; overflow:hidden;
+  }
+  .amen-item{
+    background:var(--charcoal-deep); padding:32px 28px;
+    display:flex; align-items:center; gap:18px;
+    transition:background 0.4s var(--ease);
+  }
+  .amen-item:hover{background:#211f1a;}
+  .amen-item svg{width:22px; height:22px; stroke:var(--gold-soft); flex-shrink:0;}
+  .amen-item span{font-size:0.95rem; letter-spacing:0.01em;}
+
+  /* ---------- location ---------- */
+  .location{background:var(--ivory);}
+  .location-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:stretch;}
+  .location-copy h2{font-size:clamp(1.9rem, 3.2vw, 2.5rem); line-height:1.2; margin-bottom:22px;}
+  .location-copy p{font-size:1.02rem; line-height:1.8; color:rgba(38,36,31,0.72); margin-bottom:28px;}
+  .location-address{
+    display:flex; gap:14px; padding:22px 24px; background:var(--beige); border-radius:14px;
+    margin-bottom:30px; border:1px solid var(--line);
+  }
+  .location-address svg{width:20px; height:20px; stroke:var(--gold); flex-shrink:0; margin-top:2px;}
+  .location-address p{margin:0; font-size:0.92rem; line-height:1.6; color:var(--charcoal);}
+  .map-frame{
+    border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line);
+    min-height:340px; position:relative;
+  }
+  .map-frame iframe{width:100%; height:100%; min-height:340px; border:0; filter:grayscale(0.15) contrast(1.02);}
+
+  /* ---------- final cta ---------- */
+  .final-cta{
+    position:relative; padding:150px 0; text-align:center; overflow:hidden;
+  }
+  .final-cta-bg{
+    position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=2000&q=80');
+    background-size:cover; background-position:center; background-attachment:fixed;
+  }
+  .final-cta-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,18,15,0.78), rgba(20,18,15,0.7));}
+  .final-cta-content{position:relative; z-index:2; color:var(--ivory);}
+  .final-cta h2{font-size:clamp(2.1rem, 4.6vw, 3.4rem); line-height:1.14; margin-bottom:20px;}
+  .final-cta p{font-size:1.05rem; color:rgba(247,243,234,0.82); max-width:480px; margin:0 auto 40px;}
+  .final-cta-actions{display:flex; justify-content:center; gap:16px; flex-wrap:wrap;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--charcoal-deep); color:rgba(247,243,234,0.75); padding:70px 0 30px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:50px; padding-bottom:50px; border-bottom:1px solid var(--line-on-dark);}
+  .footer-logo{font-family:'Fraunces', serif; font-size:1.2rem; color:var(--ivory); letter-spacing:0.06em; margin-bottom:16px;}
+  .footer-grid p{font-size:0.9rem; line-height:1.7; color:rgba(247,243,234,0.55); max-width:280px;}
+  .footer-col h4{font-size:0.75rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:20px; font-weight:600;}
+  .footer-col a{
+    display:flex; align-items:center; gap:10px; font-size:0.9rem; color:rgba(247,243,234,0.75);
+    margin-bottom:14px; transition:color 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .footer-col a:hover{color:var(--gold-soft); transform:translateX(4px);}
+  .footer-col a svg{width:16px; height:16px; stroke:var(--gold-soft); flex-shrink:0;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; padding-top:28px;
+    font-size:0.78rem; color:rgba(247,243,234,0.4); flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .about-grid, .location-grid{grid-template-columns:1fr; gap:44px;}
+    .room-grid{grid-template-columns:1fr 1fr;}
+    .highlight-grid{grid-template-columns:1fr 1fr;}
+    .amen-grid{grid-template-columns:1fr 1fr;}
+    .footer-grid{grid-template-columns:1fr; gap:34px;}
+  }
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; top:0; right:0; height:100vh; width:78%; max-width:320px;
+      background:var(--charcoal-deep); flex-direction:column; justify-content:center; align-items:flex-start;
+      padding:0 40px; gap:28px; transform:translateX(100%); transition:transform 0.5s var(--ease);
+      z-index:400;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{color:var(--ivory) !important; font-size:1.1rem;}
+    .nav-cta{order:99;}
+    .nav-toggle{display:block; z-index:401;}
+    .room-grid{grid-template-columns:1fr;}
+    .highlight-grid{grid-template-columns:1fr;}
+    .amen-grid{grid-template-columns:1fr;}
+    .section{padding:90px 0;}
+    .hero-content{padding-bottom:70px;}
+    .final-cta{padding:110px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div id="grain"></div>
+
+<header id="siteHeader">
+  <nav>
+    <a href="#home" class="logo">HOTEL SINGH RESIDENCY</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:+919899479622" class="nav-cta">Book Your Stay</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg">
+    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=2000&q=80" alt="Hotel Singh Residency Medanta — interior view" fetchpriority="high">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-loc"><span class="dot"></span> Sector 39, Gurugram · Near Medanta Hospital</div>
+    <h1>
+      <span class="line"><span>A Comfortable Stay,</span></span>
+      <span class="line"><span>Close to What Matters.</span></span>
+    </h1>
+    <p class="hero-sub">Hotel Singh Residency Medanta</p>
+    <p class="hero-support">A peaceful and convenient stay near Medanta Hospital, Gurugram — thoughtfully designed for rest, ease, and comfort.</p>
+    <div class="hero-actions">
+      <a href="tel:+919899479622" class="btn btn-primary">Book Your Stay</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=400+Sector+39+Road+near+Medanta+House+Medicity+Sector+39+Gurugram+Haryana" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="stem"></span></div>
+</section>
+
+<section class="about section" id="about">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1200&q=80" alt="Comfortable room at Hotel Singh Residency Medanta" loading="lazy">
+      <div class="about-media-tag">
+        <span class="num">5</span>
+        <span class="label">Minutes to Medanta Hospital</span>
+      </div>
+    </div>
+    <div class="about-copy reveal reveal-delay-1">
+      <span class="eyebrow">About Us</span>
+      <h2>Stay Close. Stay Comfortable.</h2>
+      <div class="about-divider"></div>
+      <p>Hotel Singh Residency Medanta offers a convenient place to stay for guests visiting Gurugram — especially those who need to be close to Medanta Hospital without compromising on comfort.</p>
+      <p>Set in Sector 39, our rooms and welcoming atmosphere are designed for a calm, restful stay, whether you're here for a hospital visit, a short trip, or simply passing through the city.</p>
+    </div>
+  </div>
+</section>
+
+<section class="highlights section-tight">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Stay Here</span>
+      <h2>Quiet Comforts, Close By</h2>
+    </div>
+    <div class="highlight-grid reveal">
+      <div class="highlight-card">
+        <div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div>
+        <h3>Near Medanta Hospital</h3>
+        <p>Conveniently located close to Medanta Hospital, just minutes away.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12a4 4 0 014-4h10a4 4 0 014 4M3 12v6h18v-6M7 8V6a2 2 0 012-2h6a2 2 0 012 2v2"/></svg></div>
+        <h3>Comfortable Rooms</h3>
+        <p>A relaxing, well-kept space designed for a comfortable stay.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg></div>
+        <h3>Free Wi-Fi</h3>
+        <p>Stay connected throughout your visit with complimentary Wi-Fi.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 12h18"/></svg></div>
+        <h3>Free Parking</h3>
+        <p>Convenient, complimentary parking available for all guests.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rooms section" id="rooms">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Accommodation</span>
+      <h2>Your Space to Unwind</h2>
+      <p>Simple, comfortable rooms designed to help you rest easy — whether you're staying for a night or several.</p>
+    </div>
+    <div class="room-grid">
+      <div class="room-card reveal">
+        <div class="room-media"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=80" alt="Classic room" loading="lazy"></div>
+        <div class="room-body">
+          <span class="eyebrow">Classic Room</span>
+          <h3>Comfort Room</h3>
+          <p>A cosy, well-appointed room with everything you need for a restful stay.</p>
+          <div class="room-actions">
+            <a href="tel:+919899479622" class="room-link">View Details →</a>
+            <a href="tel:+919899479622" class="room-mini-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="room-card reveal reveal-delay-1">
+        <div class="room-media"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=900&q=80" alt="Deluxe room" loading="lazy"></div>
+        <div class="room-body">
+          <span class="eyebrow">Spacious Stay</span>
+          <h3>Deluxe Room</h3>
+          <p>Extra space and a calm ambience, ideal for longer stays near the hospital.</p>
+          <div class="room-actions">
+            <a href="tel:+919899479622" class="room-link">View Details →</a>
+            <a href="tel:+919899479622" class="room-mini-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="room-card reveal reveal-delay-2">
+        <div class="room-media"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80" alt="Executive room" loading="lazy"></div>
+        <div class="room-body">
+          <span class="eyebrow">For Families</span>
+          <h3>Executive Room</h3>
+          <p>A quiet, comfortable choice for families and guests seeking extra ease.</p>
+          <div class="room-actions">
+            <a href="tel:+919899479622" class="room-link">View Details →</a>
+            <a href="tel:+919899479622" class="room-mini-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="amenities section-tight" id="amenities">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Amenities</span>
+      <h2>Everything You Need</h2>
+      <p>Thoughtful essentials that make your stay simple and comfortable.</p>
+    </div>
+    <div class="amen-grid reveal">
+      <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span>Air Conditioning</span></div>
+      <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg><span>Free Wi-Fi</span></div>
+      <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 12h18"/></svg><span>Free Parking</span></div>
+      <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg><span>Comfortable Rooms</span></div>
+      <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>24-Hour Front Desk</span></div>
+      <div class="amen-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M6 19V9l6-4 6 4v10M10 19v-5h4v5"/></svg><span>Room Service</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="location section" id="location">
+  <div class="wrap location-grid">
+    <div class="location-copy reveal">
+      <span class="eyebrow">Location</span>
+      <h2>Conveniently Located Near Medanta</h2>
+      <p>Situated in Sector 39, Gurugram, Hotel Singh Residency Medanta places you just minutes from Medanta Hospital and the surrounding Medicity area — an easy, stress-free stay for visits, appointments, or overnight rest.</p>
+      <div class="location-address">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <p>400, Sector 39 Road, near Medanta House, Medicity, Sector 39, Gurugram, Haryana</p>
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=400+Sector+39+Road+near+Medanta+House+Medicity+Sector+39+Gurugram+Haryana" target="_blank" rel="noopener" class="btn btn-outline-dark">Open in Google Maps</a>
+    </div>
+    <div class="map-frame reveal reveal-delay-1">
+      <iframe src="https://www.google.com/maps?q=400+Sector+39+Road+near+Medanta+House+Medicity+Sector+39+Gurugram+Haryana&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Hotel Singh Residency Medanta location map"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="contact">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-overlay"></div>
+  <div class="wrap final-cta-content reveal">
+    <span class="eyebrow" style="color:var(--gold-soft);">Reserve Your Room</span>
+    <h2 style="margin-top:16px;">Your Stay Starts Here</h2>
+    <p>Comfort, convenience, and a welcoming place to stay in Gurugram.</p>
+    <div class="final-cta-actions">
+      <a href="tel:+919899479622" class="btn btn-primary">Book Your Stay</a>
+      <a href="tel:+919899479622" class="btn btn-ghost">Call Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">HOTEL SINGH RESIDENCY</div>
+        <p>A peaceful, comfortable stay near Medanta Hospital, Sector 39, Gurugram, Haryana.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+919899479622"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+91 98994 79622</a>
+        <a href="https://wa.me/919899479622" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>WhatsApp</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=400+Sector+39+Road+near+Medanta+House+Medicity+Sector+39+Gurugram+Haryana" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <a href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>Instagram</a>
+        <a href="#location"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Sector 39, Gurugram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Hotel Singh Residency Medanta. All rights reserved.</span>
+      <span>Sector 39, Gurugram, Haryana</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll state
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => {
+    if(window.scrollY > 60){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15, rootMargin:'0px 0px -60px 0px'});
+  revealEls.forEach(el => io.observe(el));
+
+  // Subtle hero parallax
+  const heroBg = document.getElementById('heroBg');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if(y < window.innerHeight){
+          heroBg.style.transform = 'translateY(' + (y * 0.18) + 'px) scale(1.04)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+</script>
+
+</body>
+</html>
